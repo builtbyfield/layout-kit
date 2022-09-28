@@ -5,6 +5,8 @@ structure robust layout designs for websites.
 
 ## Installation
 
+NOT ON NPM YET
+
 ```zsh
 yarn add -D tailwind-layout
 ```
