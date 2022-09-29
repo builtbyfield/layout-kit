@@ -7,9 +7,12 @@ import { Switch } from "../../components";
 const gridBackground =
   "repeating-linear-gradient(90deg, var(--column-bg), var(--column-bg) calc((100% - (((var(--columns) - 1) * var(--gutters)))) / var(--columns)),rgba(0,0,0,0) calc((100% - (((var(--columns) - 1) * var(--gutters)))) / var(--columns)), rgba(0,0,0,0) calc((100% - (((var(--columns) - 1) * var(--gutters)))) / var(--columns) + var(--gutters)))";
 
-type GridProps = { children: ReactNode };
+type GridProps = {
+  children: ReactNode;
+  label?: string;
+};
 
-const Grid = ({ children }: GridProps) => {
+const Grid = ({ children, label }: GridProps) => {
   const [showColumns, setShowColumns] = useState(true);
   const [showMargins, setShowMargins] = useState(true);
 
@@ -17,14 +20,21 @@ const Grid = ({ children }: GridProps) => {
   const toggleMargins = () => setShowMargins(!showMargins);
 
   return (
-    <div className="first:mt-0 last:mb-0 my-3">
+    <div className="first:mt-0 last:mb-0 my-6">
       <div className="rounded-lg bg-gray-1 shadow-md overflow-hidden border border-gray-6">
-        <header className="flex items-center border-b border-gray-5 px-2 h-8">
+        <header className="flex relative items-center border-b border-gray-5 px-2 h-8">
           <div className="flex space-x-1.5">
             <div className="w-3 h-3 rounded-full bg-gray-5" />
             <div className="w-3 h-3 rounded-full bg-gray-5" />
             <div className="w-3 h-3 rounded-full bg-gray-5" />
           </div>
+          {label && (
+            <div className="absolute top-1/2 -translate-y-1/2 left-1/2 -translate-x-1/2">
+              <span className="block text-xs text-gray-10 font-sans">
+                {label}
+              </span>
+            </div>
+          )}
         </header>
         <main className="relative container">
           <div className="relative py-6">
@@ -56,11 +66,11 @@ const Grid = ({ children }: GridProps) => {
             />
           </div>
         </main>
-        <footer className="flex sm:flex-row flex-col space-x-0 sm:items-center border-t border-gray-5 px-3 sm:px-4 sm:py-3 py-2 space-y-1.5 sm:space-y-0 sm:space-x-3">
-          <div className="text-xs font-sans text-gray-11 after:content-[var(--breakpoint)] after:font-mono after:text-gray-10 after:rounded after:ring-1 after:ring-gray-4 after:bg-gray-3 after:px-[0.3em] after:py-[0.1em] after:text-[0.9em]">
+        <footer className="flex sm:items-center border-t border-gray-5 px-3 sm:px-4 sm:py-3 py-2 space-x-3">
+          <div className="text-xs font-sans shrink-0 text-gray-11 after:content-[var(--breakpoint)] after:font-mono after:text-gray-10 after:rounded after:ring-1 after:ring-gray-4 after:bg-gray-3 after:px-[0.3em] after:py-[0.1em] after:text-[0.9em]">
             Current breakpoint:{" "}
           </div>
-          <div className="flex sm:justify-end items-center flex-1">
+          <div className="flex sm:flex-row flex-col justify-end items-end sm:space-y-0 space-y-1.5 sm:items-center flex-1">
             <Switch
               className="text-xs text-gray-11"
               defaultChecked={showColumns}
@@ -68,7 +78,7 @@ const Grid = ({ children }: GridProps) => {
             >
               Columns
             </Switch>
-            <span className="block h-3.5 bg-gray-6 mx-3 w-px" />
+            <span className="hidden sm:block h-3.5 bg-gray-6 mx-3 w-px" />
             <Switch
               className="text-xs text-gray-11"
               defaultChecked={showMargins}
@@ -86,4 +96,9 @@ const Grid = ({ children }: GridProps) => {
 export const grid: MarkdocNextJsSchema = {
   render: Grid,
   children: ["tag"],
+  attributes: {
+    label: {
+      type: String,
+    },
+  },
 };

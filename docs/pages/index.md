@@ -117,7 +117,7 @@ This plugin creates classes to handle column layouts where `N` can be a number
 of columns, up to the largest amount of columns defined or a fraction
 (`1/2`, `1/3`, `1/4`, `2/3` or `3/4`).
 
-{% grid %}
+{% grid label="column-widths.jsx" %}
 {% column width="w-1-cols" /%}
 {% column width="w-2-cols" /%}
 {% column width="w-3-cols" /%}

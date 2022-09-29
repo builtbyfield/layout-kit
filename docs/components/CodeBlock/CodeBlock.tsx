@@ -15,7 +15,7 @@ export function CodeBlock({ children, language }: CodeBlockProps) {
   }, [children]);
 
   return (
-    <div className="first:mt-0 last:mb-0 my-3 relative" aria-live="polite">
+    <div className="first:mt-0 last:mb-0 my-6 relative" aria-live="polite">
       <pre
         ref={ref}
         className={join(
