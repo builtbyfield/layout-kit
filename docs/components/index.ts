@@ -4,3 +4,4 @@ export { SideNav } from "./SideNav";
 export { TableOfContents } from "./TableOfContents";
 export { Header } from "./Header";
 export { Footer } from "./Footer";
+export { type SwitchProps, Switch } from "./Switch";

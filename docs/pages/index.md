@@ -6,7 +6,7 @@ description: Tailwind CSS Layout is a powerful, flexible, Tailwind CSS layout pl
 # Get started with Tailwind CSS Layout
 
 A Tailwind CSS plugin that provides a composable API of variables and classes to
-structure robust layout designs for websites. {% class="text-xl" %}
+structure robust layout designs for websites. {% class="text-xl text-gray-11" %}
 
 ## Installation
 
@@ -111,9 +111,11 @@ module.exports = {
 };
 ```
 
-This plugin creates classes to handle column layouts:
+## Usage
 
-Where `N` can be a number of columns, up to the largest amount of columns defined or a fraction (`1/2`, `1/3`, `1/4`, `2/3` or `3/4`).
+This plugin creates classes to handle column layouts where `N` can be a number
+of columns, up to the largest amount of columns defined or a fraction
+(`1/2`, `1/3`, `1/4`, `2/3` or `3/4`).
 
 {% grid %}
 {% column width="w-1-cols" /%}
@@ -129,6 +131,28 @@ Where `N` can be a number of columns, up to the largest amount of columns define
 {% column width="w-11-cols" /%}
 {% column width="w-12-cols" /%}
 {% /grid %}
+
+The following code would render the columns above:
+
+```html
+<!-- HTML shown for demonstrative purposes -->
+<div class="w-1-cols"></div>
+<div class="w-2-cols"></div>
+<div class="w-3-cols"></div>
+<div class="w-4-cols"></div>
+<div class="w-5-cols"></div>
+<div class="w-6-cols"></div>
+<div class="w-7-cols"></div>
+<div class="w-8-cols"></div>
+<div class="w-9-cols"></div>
+<div class="w-10-cols"></div>
+<div class="w-11-cols"></div>
+<div class="w-12-cols"></div>
+```
+
+As the plugin reads the config, it works out the maximum amount of columns it
+needs - so if your smallest breakpoint has `4` design columns and the largest
+has `12` - then it will create classes `.w-1-cols` through `.w-12-cols`.
 
 ## A heading
 
@@ -158,18 +182,4 @@ Where `N` can be a number of columns, up to the largest amount of columns define
 <div class="w-12-cols"></div>
 ```
 
-As the plugin reads the config, it works out the maximum amount of columns it needs - so if your smallest breakpoint has 4 design columns and the largest has 12 - then it will create classes .w-1-cols through .w-12-cols.
-
-```bash
-npm install
-# or
-yarn install
-```
-
-### Nested
-
-sdfsdfs
-
-## Hello
-
-sdfsdf
+As the plugin reads the config, it works out the maximum amount of columns it needs - so if your smallest breakpoint has 4 design columns and the largest has `12` - then it will create classes `.w-1-cols` through `.w-12-cols`.

@@ -27,7 +27,7 @@ export const Layout = ({ children, frontmatter, content }: LayoutProps) => {
       <Header />
       <main className="flex flex-grow min-h-screen max-w-[100vw]">
         <SideNav />
-        <article className="container flex-grow py-8 min-w-0">
+        <article className="container flex-grow pt-16 pb-16 min-w-0">
           <div id="skip-nav" />
           {children}
         </article>
