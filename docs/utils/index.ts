@@ -1,0 +1,1 @@
+export { collectHeadings } from "./collectHeadings";

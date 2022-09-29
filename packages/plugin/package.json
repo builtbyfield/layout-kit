@@ -1,0 +1,36 @@
+{
+  "name": "@tailwindcss-layout/plugin",
+  "version": "0.0.0",
+  "description": "",
+  "main": "./dist/index.js",
+  "types": "./dist/index.d.ts",
+  "files": [
+    "dist"
+  ],
+  "publishConfig": {
+    "access": "public"
+  },
+  "license": "MIT",
+  "scripts": {
+    "build": "tsup src/index.ts --dts",
+    "dev": "tsup src/index.ts --dts",
+    "test": "vitest run"
+  },
+  "peerDependencies": {
+    "tailwindcss": "^3.1.8"
+  },
+  "devDependencies": {
+    "@types/cssesc": "^3.0.0",
+    "cssesc": "^3.0.0",
+    "prettier": "^2.7.1",
+    "tailwindcss": "^3.1.8",
+    "tsup": "6.2.3",
+    "typescript": "4.8.4",
+    "vitest": "^0.23.4"
+  },
+  "tsup": {
+    "footer": {
+      "js": "module.exports = module.exports.default;"
+    }
+  }
+}
